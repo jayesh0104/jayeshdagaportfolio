@@ -1,30 +1,39 @@
-name: Dev Deployment
+name: Deploy to EC2 on Main Push
 
 on:
   push:
     branches:
-      - dev
+      - main
 
 jobs:
   deploy:
+    name: Deploy to EC2 Dev Server
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Setup SSH
-        uses: webfactory/ssh-agent@v0.8.1
-        with:
-          ssh-private-key: ${{ secrets.EC2_SSH_KEY }}
-
-      - name: Deploy to EC2
+      - name: Set up SSH key
         run: |
-          ssh -o StrictHostKeyChecking=no ${{ secrets.EC2_USER }}@${{ secrets.EC2_DEV_HOST }} << EOF
+          echo "${{ secrets.EC2_SSH_KEY }}" > key.pem
+          chmod 600 key.pem
+
+      - name: Deploy to EC2 via SSH
+        run: |
+          ssh -o StrictHostKeyChecking=no -i key.pem ${{ secrets.EC2_USER }}@${{ secrets.EC2_DEV_HOST }} << 'EOF'
+            set -e
             cd ${{ secrets.APP_DIR }}
-            git pull origin dev
-            npm ci
+
+            echo "🔄 Pulling latest code..."
+            git pull origin main
+
+            echo "📦 Installing dependencies..."
+            npm install
+
+            echo "🛠️ Building Next.js app..."
             npm run build
-            pm2 restart jayeshdagaportfolio || pm2 start npm --name jayeshdagaportfolio -- start
-            pm2 save
+
+            echo "🚀 Restarting with PM2..."
+            pm2 restart all || pm2 start npm --name "jayeshdagaportfolio" -- run start
           EOF
