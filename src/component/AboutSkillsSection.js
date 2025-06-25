@@ -15,6 +15,7 @@ export default function AboutSkillsSection() {
     { name: 'TensorFlow', src: '/tensor.png' },
   ];
 
+  
   return (
     <section className="w-full px-6 sm:px-10 lg:px-20 lg:pr-40 py-20 text-gray-800">
       <div className="flex flex-col gap-6 lg:col-span-8">
