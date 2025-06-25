@@ -13,7 +13,6 @@ export default function AboutSkillsSection() {
     { name: 'GitHub', src: '/github.png' },
     { name: 'Python', src: '/python.png' },
     { name: 'TensorFlow', src: '/tensor.png' },
-    
   ];
 
   return (
