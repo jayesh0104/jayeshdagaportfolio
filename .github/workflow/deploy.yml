@@ -1,0 +1,30 @@
+name: Dev Deployment
+
+on:
+  push:
+    branches:
+      - dev
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup SSH
+        uses: webfactory/ssh-agent@v0.8.1
+        with:
+          ssh-private-key: ${{ secrets.EC2_SSH_KEY }}
+
+      - name: Deploy to EC2
+        run: |
+          ssh -o StrictHostKeyChecking=no ${{ secrets.EC2_USER }}@${{ secrets.EC2_DEV_HOST }} << EOF
+            cd ${{ secrets.APP_DIR }}
+            git pull origin dev
+            npm ci
+            npm run build
+            pm2 restart jayeshdagaportfolio || pm2 start npm --name jayeshdagaportfolio -- start
+            pm2 save
+          EOF
