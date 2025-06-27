@@ -1,10 +1,16 @@
 [
-    {
-      "title": "Prompt Analyzer",
-      "category": "LLM Tools / Flask App",
-      "description": "A developer tool that analyzes LLM prompts based on key principles like context, formatting, and constraints, helping prompt engineers craft better instructions for AI.",
-      "color": "bg-[#E7F5FF]", 
-      "image": "/images/prompt-analyzer.jpg"
-    }
-  ]
-  
+  {
+    "title": "Prompt Analyzer",
+    "category": "LLM Tools / Flask App",
+    "description": "A developer tool that analyzes LLM prompts based on key principles like context, formatting, and constraints, helping prompt engineers craft better instructions for AI.",
+    "color": "bg-[#E7F5FF]", 
+    "image": "/images/prompt-analyzer.jpg"
+  },
+  {
+    "title": "Portfolio Website",
+    "category": "Next.js / CI/CD / Deployment",
+    "description": "A personal portfolio website showcasing projects and skills with integrated CI/CD, automated testing, initially deployed on AWS EC2, and finally deployed on Vercel for optimal performance.",
+    "color": "bg-[#FFF7E6]",
+    "folder": "portfolio"
+  }
+]
