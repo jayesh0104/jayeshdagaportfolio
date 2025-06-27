@@ -6,8 +6,9 @@ const nextConfig = {
       devIndicators: {
         autoPrerender: false, // Disable auto prerendering indication
         buildActivity: false, // Disable the build activity indicator
-      },
-      output: 'export',
+      }
+      // },
+      // output: 'export',
 };
 
 export default nextConfig;
