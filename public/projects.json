@@ -1,0 +1,10 @@
+[
+    {
+      "title": "Prompt Analyzer",
+      "category": "LLM Tools / Flask App",
+      "description": "A developer tool that analyzes LLM prompts based on key principles like context, formatting, and constraints, helping prompt engineers craft better instructions for AI.",
+      "color": "bg-[#E7F5FF]", 
+      "image": "/images/prompt-analyzer.jpg"
+    }
+  ]
+  
