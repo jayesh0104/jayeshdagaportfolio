@@ -91,7 +91,7 @@ export default function Home() {
 
             <div className="flex flex-col justify-center gap-6 text-left text-base sm:text-lg mt-0 px-0 lg:px-16">
               <a
-                href="https://drive.google.com/file/d/1OuyChh8x-qHhZUBJ3LbjuRZJKGx5Tdj6/view?usp=drive_link"
+                href="https://drive.google.com/file/d/1_8vj93B-utMQK2Mw239kNMNy7qNURQby/view?usp=drive_link"
                 target="_blank"
                 rel="noopener noreferrer"
               >
